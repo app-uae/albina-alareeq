@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>البناء العريق للمقاولات والصيانة العامة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A84C;--gold2:#E8C97A;--dark:#0C0C0C;--dark2:#141414;--dark3:#1C1C1C;--white:#F5F0E8;--gray:rgba(245,240,232,0.5);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--white);font-family:"Tajawal",sans-serif;direction:rtl;overflow-x:hidden;}
+
+/* LOADER */
+#loader{position:fixed;inset:0;z-index:99999;background:#0C0C0C;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+#loader .bg-lines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(201,168,76,0.04) 60px,rgba(201,168,76,0.04) 61px);animation:bgmove 8s linear infinite;}
+@keyframes bgmove{from{transform:translateX(0)}to{transform:translateX(61px)}}
+.lc{position:absolute;width:55px;height:55px;}
+.lc.a{top:22px;right:22px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);opacity:0;animation:fin .5s .1s forwards;}
+.lc.b{top:22px;left:22px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);opacity:0;animation:fin .5s .2s forwards;}
+.lc.c{bottom:22px;right:22px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);opacity:0;animation:fin .5s .3s forwards;}
+.lc.d{bottom:22px;left:22px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);opacity:0;animation:fin .5s .4s forwards;}
+@keyframes fin{to{opacity:1}}
+.lring{position:absolute;border-radius:50%;border:1px solid transparent;}
+.lring.r1{width:320px;height:320px;border-top-color:rgba(201,168,76,0.3);border-right-color:rgba(201,168,76,0.1);animation:spin 5s linear infinite;}
+.lring.r2{width:400px;height:400px;border-bottom-color:rgba(201,168,76,0.2);border-left-color:rgba(201,168,76,0.08);animation:spin 8s linear infinite reverse;}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.lorbit{position:absolute;width:320px;height:320px;animation:spin 5s linear infinite;}
+.lorbit-dot{position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold),0 0 20px rgba(201,168,76,0.5);}
+.lparticles{position:absolute;inset:0;pointer-events:none;}
+.lp{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:0;}
+#llogo{position:relative;z-index:2;opacity:0;transform:translateY(18px);animation:lup .7s ease .3s forwards;}
+#llogo img{width:260px;max-width:78vw;}
+@keyframes lup{to{opacity:1;transform:translateY(0)}}
+#ldiv{width:0;height:1px;background:linear-gradient(to left,transparent,var(--gold),transparent);margin:20px 0 16px;position:relative;z-index:2;animation:lexpand .8s ease .9s forwards;}
+@keyframes lexpand{to{width:240px}}
+#ltag{font-size:12px;color:rgba(201,168,76,0.65);letter-spacing:3px;opacity:0;animation:lup .5s ease 1.1s forwards;position:relative;z-index:2;}
+#lbarwrap{width:240px;height:2px;background:rgba(255,255,255,0.07);margin-top:28px;overflow:hidden;position:relative;z-index:2;opacity:0;animation:lup .4s ease 1.2s forwards;}
+#lbarfill{height:100%;width:0%;background:linear-gradient(to left,var(--gold2),var(--gold));box-shadow:0 0 8px rgba(201,168,76,0.5);transition:width .05s linear;}
+#lpct{font-size:11px;color:rgba(201,168,76,0.5);letter-spacing:2px;margin-top:8px;position:relative;z-index:2;opacity:0;animation:lup .4s ease 1.3s forwards;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;transition:background .4s;}
+nav.solid{background:rgba(12,12,12,.97);border-bottom:1px solid rgba(201,168,76,.15);backdrop-filter:blur(16px);}
+.nav-brand{display:flex;align-items:center;text-decoration:none;}
+.nav-brand img{height:44px;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--gray);transition:color .3s;position:relative;}
+.nav-links a::after{content:"";position:absolute;bottom:-3px;right:0;width:0;height:1.5px;background:var(--gold);transition:width .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{background:var(--gold);color:var(--dark);padding:8px 20px;font-size:13px;font-weight:700;font-family:"Tajawal";border:none;cursor:pointer;transition:background .3s;}
+.nav-cta:hover{background:var(--gold2);}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer;}
+.ham span{display:block;width:22px;height:2px;background:var(--white);transition:all .3s;border-radius:1px;}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.ham.open span:nth-child(2){opacity:0;}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:199;opacity:0;pointer-events:none;transition:opacity .3s;}
+.mob-overlay.open{opacity:1;pointer-events:all;}
+.mob-menu{position:fixed;top:0;right:0;bottom:0;width:270px;background:var(--dark2);z-index:200;transform:translateX(100%);transition:transform .4s ease;padding:72px 24px 32px;display:flex;flex-direction:column;border-left:1px solid rgba(201,168,76,.12);}
+.mob-menu.open{transform:translateX(0);}
+.mob-menu a{text-decoration:none;color:var(--white);font-size:17px;font-weight:700;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;transition:color .3s;cursor:pointer;}
+.mob-menu a:hover{color:var(--gold);}
+.mob-menu a span{font-size:12px;color:var(--gold);}
+
+/* HERO */
+#hero{min-height:100svh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:90px 20px 56px;}
+.h-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease;}
+.h-slide.on{opacity:1;}
+.h-slide:nth-child(1){background-image:url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=85");}
+.h-slide:nth-child(2){background-image:url("https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=85");}
+.h-slide:nth-child(3){background-image:url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=85");}
+.h-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,12,.94) 0%,rgba(12,12,12,.38) 60%,rgba(12,12,12,.55) 100%);}
+.h-content{position:relative;z-index:2;max-width:760px;}
+.h-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);padding:5px 14px;margin-bottom:20px;}
+.h-badge::before{content:"";width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.h-badge span{font-size:11px;color:var(--gold);}
+.h-title{font-size:clamp(36px,8vw,78px);font-weight:900;line-height:1.05;color:var(--white);margin-bottom:10px;}
+.h-title .ac{color:var(--gold);display:block;}
+.h-sub{font-size:clamp(13px,2vw,16px);color:var(--gray);line-height:1.9;max-width:500px;margin-bottom:36px;}
+.h-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-g{background:var(--gold);color:var(--dark);padding:13px 28px;font-size:15px;font-weight:700;font-family:"Tajawal";border:none;display:inline-block;transition:background .3s,transform .2s;cursor:pointer;}
+.btn-g:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-o{background:transparent;color:var(--white);padding:13px 28px;font-size:15px;font-weight:500;font-family:"Tajawal";border:1.5px solid rgba(245,240,232,.28);display:inline-block;transition:border-color .3s,color .3s;cursor:pointer;}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);}
+.h-dots{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:7px;}
+.h-dot{width:8px;height:8px;border-radius:50%;background:rgba(245,240,232,.3);border:none;cursor:pointer;transition:background .3s,width .3s;padding:0;}
+.h-dot.on{background:var(--gold);width:22px;border-radius:4px;}
+
+/* TICKER */
+.ticker{background:var(--gold);padding:11px 0;overflow:hidden;}
+.t-track{display:flex;white-space:nowrap;animation:tick 28s linear infinite;}
+.t-item{display:inline-flex;align-items:center;gap:14px;padding:0 20px;font-size:12px;font-weight:700;color:var(--dark);}
+.t-dot{width:4px;height:4px;background:rgba(12,12,12,.35);border-radius:50%;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.sec{padding:70px 20px;}
+.sec-inner{max-width:1160px;margin:0 auto;}
+.sec-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;}
+.sec-tag::after{content:"";width:28px;height:1.5px;background:var(--gold);}
+.sec-tag span{font-size:11px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-weight:600;}
+.sec-title{font-size:clamp(28px,4vw,50px);font-weight:900;line-height:1.1;color:var(--white);margin-bottom:14px;}
+.outline{-webkit-text-stroke:1.5px rgba(245,240,232,.22);color:transparent;}
+
+/* ABOUT */
+#about{background:var(--dark2);}
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.a-imgs{position:relative;}
+.a-main{width:100%;aspect-ratio:4/5;object-fit:cover;filter:brightness(.85);display:block;background:var(--dark3);}
+.a-small{position:absolute;bottom:-18px;left:-16px;width:46%;aspect-ratio:1;object-fit:cover;border:3px solid var(--dark2);filter:brightness(.8);display:block;background:var(--dark3);}
+.a-yr{position:absolute;top:22px;right:-14px;background:var(--gold);padding:16px 18px;text-align:center;}
+.a-yr .n{font-size:32px;font-weight:900;color:var(--dark);line-height:1;}
+.a-yr .l{font-size:10px;color:rgba(12,12,12,.65);font-weight:600;}
+.a-text p{color:var(--gray);line-height:1.9;font-size:14px;margin-bottom:18px;}
+.a-hl{color:var(--gold)!important;font-weight:700;font-size:15px!important;border-right:3px solid var(--gold);padding-right:14px;line-height:1.7;margin:22px 0!important;}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+.badge{display:flex;align-items:center;gap:9px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);padding:9px 14px;}
+.badge svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.8;flex-shrink:0;}
+.badge span{font-size:12px;color:var(--white);font-weight:500;}
+
+/* SERVICES */
+#services{background:var(--dark);}
+.svc-g{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:46px;}
+.svc{background:var(--dark2);padding:36px 28px;position:relative;overflow:hidden;transition:background .35s;}
+.svc::before{content:"";position:absolute;bottom:0;right:0;left:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .4s;}
+.svc:hover{background:var(--dark3);}
+.svc:hover::before{transform:scaleX(1);}
+.svc-n{font-size:58px;font-weight:900;color:rgba(201,168,76,.07);line-height:1;margin-bottom:18px;direction:ltr;text-align:left;transition:color .4s;}
+.svc:hover .svc-n{color:rgba(201,168,76,.13);}
+.svc-ic{width:46px;height:46px;border:1.5px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:border-color .3s,background .3s;}
+.svc:hover .svc-ic{border-color:var(--gold);background:rgba(201,168,76,.1);}
+.svc-ic svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.6;}
+.svc h3{font-size:18px;font-weight:800;color:var(--white);margin-bottom:10px;}
+.svc p{font-size:13px;color:var(--gray);line-height:1.85;}
+
+/* NUMBERS */
+#numbers{background:var(--gold);padding:56px 20px;}
+.num-g{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.num-i{text-align:center;padding:12px 8px;border-left:1px solid rgba(12,12,12,.15);}
+.num-i:last-child{border-left:none;}
+.num-i .big{font-size:clamp(34px,5vw,56px);font-weight:900;color:var(--dark);line-height:1;}
+.num-i .lbl{font-size:12px;color:rgba(12,12,12,.58);font-weight:600;margin-top:5px;}
+
+/* PROJECTS */
+#projects{background:var(--dark2);}
+.filt{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 38px;}
+.fb{background:transparent;border:1px solid rgba(245,240,232,.15);color:var(--gray);padding:7px 18px;font-size:13px;font-weight:600;font-family:"Tajawal";cursor:pointer;transition:all .3s;}
+.fb.on,.fb:hover{background:var(--gold);border-color:var(--gold);color:var(--dark);}
+.proj-g{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.proj-i{position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer;background:var(--dark3);}
+.proj-i img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .4s;filter:brightness(.75);display:block;}
+.proj-i:hover img{transform:scale(1.07);filter:brightness(.6);}
+.proj-inf{position:absolute;inset:0;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(12,12,12,.85) 0%,transparent 55%);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s;}
+.proj-i:hover .proj-inf{opacity:1;transform:translateY(0);}
+.p-lbl{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--dark);padding:3px 9px;font-size:10px;font-weight:700;}
+.proj-inf h4{font-size:15px;font-weight:800;color:var(--white);}
+.proj-inf span{font-size:11px;color:var(--gold);margin-top:2px;display:block;}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
+.lb.on{opacity:1;pointer-events:all;}
+.lb img{max-width:90vw;max-height:85vh;object-fit:contain;transform:scale(.9);transition:transform .3s;}
+.lb.on img{transform:scale(1);}
+.lb-x{position:absolute;top:16px;left:16px;background:var(--gold);border:none;width:38px;height:38px;font-size:18px;cursor:pointer;color:var(--dark);font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+/* PROCESS */
+#process{background:var(--dark);}
+.proc-list{margin-top:46px;}
+.proc-s{display:grid;grid-template-columns:52px 1fr;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid rgba(245,240,232,.07);cursor:pointer;}
+.proc-s:last-child{border-bottom:none;}
+.p-n{font-size:36px;font-weight:900;color:rgba(201,168,76,.2);line-height:1;text-align:center;transition:color .3s;direction:ltr;}
+.proc-s.on .p-n,.proc-s:hover .p-n{color:var(--gold);}
+.p-t{font-size:17px;font-weight:800;color:var(--white);transition:color .3s;}
+.proc-s.on .p-t,.proc-s:hover .p-t{color:var(--gold);}
+.p-d{font-size:13px;color:var(--gray);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s,margin-top .3s;}
+.proc-s.on .p-d{max-height:130px;margin-top:8px;}
+
+/* TESTIMONIALS */
+#testi{background:var(--dark2);}
+.testi-wrap{margin-top:46px;position:relative;overflow:hidden;}
+.testi-sl{display:flex;transition:transform .5s ease;}
+.t-card{min-width:100%;padding:36px;background:var(--dark3);border:1px solid rgba(201,168,76,.12);}
+.t-stars{color:var(--gold);font-size:14px;margin-bottom:14px;}
+.t-q{font-size:clamp(15px,2.5vw,18px);color:var(--white);line-height:1.85;font-weight:400;margin-bottom:24px;}
+.t-q::before{content:"«";color:var(--gold);font-size:1.3em;margin-left:4px;}
+.t-q::after{content:"»";color:var(--gold);font-size:1.3em;margin-right:4px;}
+.t-auth{display:flex;align-items:center;gap:12px;}
+.t-av{width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:var(--dark);flex-shrink:0;}
+.t-name{font-size:14px;font-weight:700;color:var(--white);}
+.t-role{font-size:12px;color:var(--gold);}
+.t-nav{display:flex;gap:8px;justify-content:center;margin-top:22px;}
+.t-btn{width:34px;height:34px;border:1.5px solid rgba(201,168,76,.3);background:none;color:var(--gold);font-size:16px;cursor:pointer;transition:background .3s,border-color .3s;display:flex;align-items:center;justify-content:center;}
+.t-btn:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+
+/* INSTAGRAM */
+#insta{background:var(--dark);}
+.ig-g{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:38px;}
+.ig-i{position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer;background:var(--dark3);}
+.ig-i img{width:100%;height:100%;object-fit:cover;filter:brightness(.8);transition:transform .5s,filter .4s;display:block;}
+.ig-i:hover img{transform:scale(1.08);filter:brightness(.6);}
+.ig-ov{position:absolute;inset:0;background:rgba(201,168,76,.72);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s;}
+.ig-i:hover .ig-ov{opacity:1;}
+.ig-ov svg{width:30px;height:30px;fill:var(--dark);}
+.ig-cta{margin-top:24px;text-align:center;}
+.ig-cta a{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--gold);color:var(--gold);padding:11px 26px;font-size:14px;font-weight:700;text-decoration:none;transition:background .3s,color .3s;}
+.ig-cta a:hover{background:var(--gold);color:var(--dark);}
+
+/* CONTACT */
+#contact{background:var(--dark2);}
+.con-g{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:46px;}
+.c-list{display:flex;flex-direction:column;gap:14px;margin-top:28px;}
+.c-row{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid rgba(201,168,76,.12);transition:border-color .3s,background .3s;}
+.c-row:hover{border-color:var(--gold);background:rgba(201,168,76,.04);}
+.c-ic{width:40px;height:40px;background:rgba(201,168,76,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.c-ic svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.7;}
+.c-tx label{display:block;font-size:10px;color:var(--gold);letter-spacing:2px;margin-bottom:3px;font-weight:600;}
+.c-tx span{font-size:13px;color:var(--white);}
+.c-form{display:flex;flex-direction:column;gap:14px;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.f-g{display:flex;flex-direction:column;gap:5px;}
+.f-g label{font-size:10px;color:var(--gold);letter-spacing:2px;font-weight:600;}
+.f-g input,.f-g textarea,.f-g select{background:rgba(255,255,255,.04);border:1px solid rgba(245,240,232,.1);padding:12px 14px;color:var(--white);font-family:"Tajawal";font-size:14px;outline:none;transition:border-color .3s;-webkit-appearance:none;direction:rtl;}
+.f-g select option{background:var(--dark3);}
+.f-g input:focus,.f-g textarea:focus,.f-g select:focus{border-color:var(--gold);}
+.f-g textarea{min-height:100px;resize:vertical;}
+.f-sub{background:var(--gold);border:none;color:var(--dark);padding:15px;font-family:"Tajawal";font-size:15px;font-weight:800;cursor:pointer;transition:background .3s;width:100%;}
+.f-sub:hover{background:var(--gold2);}
+.f-ok{display:none;background:rgba(201,168,76,.1);border:1px solid var(--gold);color:var(--gold);padding:13px;font-size:13px;text-align:center;font-weight:600;}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid rgba(201,168,76,.12);padding:46px 20px 22px;}
+.ft-inner{max-width:1160px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:46px;padding-bottom:36px;border-bottom:1px solid rgba(245,240,232,.07);}
+.ft-logo img{height:46px;margin-bottom:14px;display:block;}
+.ft-br-txt{font-size:13px;color:var(--gray);line-height:1.8;margin-bottom:22px;max-width:260px;}
+.ft-soc{display:flex;gap:8px;}
+.ft-sc{width:34px;height:34px;border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color .3s,background .3s;}
+.ft-sc:hover{border-color:var(--gold);background:rgba(201,168,76,.1);}
+.ft-sc svg{width:14px;height:14px;fill:var(--gold);}
+.ft-col h5{font-size:10px;color:var(--gold);letter-spacing:3px;margin-bottom:18px;font-weight:700;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.ft-col ul li a{text-decoration:none;font-size:13px;color:var(--gray);transition:color .3s;cursor:pointer;}
+.ft-col ul li a:hover{color:var(--white);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:22px;flex-wrap:wrap;gap:10px;}
+.ft-bot p{font-size:11px;color:rgba(245,240,232,.22);}
+.ft-bot a{color:var(--gold);text-decoration:none;}
+
+/* SCROLL REVEAL */
+.sr{opacity:0;transform:translateY(32px);transition:opacity .72s ease,transform .72s ease;}
+.sr.in{opacity:1;transform:translateY(0);}
+.sr-l{opacity:0;transform:translateX(32px);transition:opacity .72s ease,transform .72s ease;}
+.sr-l.in{opacity:1;transform:translateX(0);}
+.sr-r{opacity:0;transform:translateX(-32px);transition:opacity .72s ease,transform .72s ease;}
+.sr-r.in{opacity:1;transform:translateX(0);}
+
+/* WHATSAPP */
+.wa{position:fixed;bottom:22px;left:22px;z-index:150;width:50px;height:50px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.4);animation:waf 3s ease infinite;}
+.wa svg{width:24px;height:24px;fill:white;}
+@keyframes waf{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.lp{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:0;}
+@keyframes lpart{0%{opacity:0;transform:translateY(0) scale(0)}20%{opacity:.8;transform:translateY(-18px) scale(1)}80%{opacity:.3;transform:translateY(-70px) scale(.6)}100%{opacity:0;transform:translateY(-130px) scale(0)}}
+#btt{position:fixed;bottom:22px;right:22px;z-index:150;width:42px;height:42px;background:var(--gold);border:none;color:var(--dark);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;transform:translateY(8px);font-family:"Tajawal";font-weight:900;}
+#btt.on{opacity:1;pointer-events:all;transform:translateY(0);}
+#btt:hover{background:var(--gold2);}
+
+/* RESPONSIVE */
+@media(max-width:880px){.nav-links,.nav-cta{display:none;}.ham{display:flex;}.about-g{grid-template-columns:1fr;}.a-imgs{max-width:440px;}.svc-g{grid-template-columns:1fr;}.num-g{grid-template-columns:repeat(2,1fr);}.num-i:nth-child(2){border-left:none;}.proj-g{grid-template-columns:repeat(2,1fr);}.con-g{grid-template-columns:1fr;}.ft-top{grid-template-columns:1fr 1fr;gap:36px;}}
+@media(max-width:520px){.proj-g{grid-template-columns:repeat(2,1fr);}.ig-g{grid-template-columns:repeat(2,1fr);}.f-row{grid-template-columns:1fr;}.ft-top{grid-template-columns:1fr;gap:28px;}.ft-bot{flex-direction:column;text-align:center;}.h-btns{flex-direction:column;}.btn-g,.btn-o{text-align:center;}.proc-s{grid-template-columns:40px 1fr;gap:14px;}.num-g{grid-template-columns:repeat(2,1fr);}.lring.r1,.lring.r2,.lorbit{width:240px;height:240px;}}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="bg-lines"></div>
+  <div class="lc a"></div><div class="lc b"></div><div class="lc c"></div><div class="lc d"></div>
+  <div class="lring r1"></div>
+  <div class="lring r2"></div>
+  <div class="lorbit"><div class="lorbit-dot"></div></div>
+  <div class="lparticles" id="lParticles"></div>
+  <div id="llogo"><img src="data:image/png;base64,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" alt="البناء العريق"></div>
+  <div id="ldiv"></div>
+  <div id="ltag">الإمارات العربية المتحدة &nbsp;·&nbsp; مقاولات &nbsp;·&nbsp; صيانة &nbsp;·&nbsp; بناء</div>
+  <div id="lbarwrap"><div id="lbarfill"></div></div>
+  <div id="lpct">٠٪</div>
+</div>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<a href="https://wa.me/971563780000" class="wa" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.952-1.404A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.95 7.95 0 01-4.056-1.107l-.292-.173-3.024.857.862-3.017-.19-.31A7.964 7.964 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg></a>
+
+<div class="mob-overlay" id="mOvl" onclick="closeM()"></div>
+<div class="mob-menu" id="mMenu">
+  <a onclick="navTo('about')">من نحن <span>←</span></a>
+  <a onclick="navTo('services')">خدماتنا <span>←</span></a>
+  <a onclick="navTo('projects')">مشاريعنا <span>←</span></a>
+  <a onclick="navTo('process')">آلية العمل <span>←</span></a>
+  <a onclick="navTo('testi')">آراء العملاء <span>←</span></a>
+  <a onclick="navTo('contact')">تواصل معنا <span>←</span></a>
+</div>
+
+<nav id="nav">
+  <a class="nav-brand" href="#"><img src="data:image/png;base64,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" alt="البناء العريق"></a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="navTo('about');return false">من نحن</a></li>
+    <li><a href="#" onclick="navTo('services');return false">خدماتنا</a></li>
+    <li><a href="#" onclick="navTo('projects');return false">مشاريعنا</a></li>
+    <li><a href="#" onclick="navTo('process');return false">آلية العمل</a></li>
+    <li><a href="#" onclick="navTo('contact');return false">تواصل</a></li>
+  </ul>
+  <button class="nav-cta" onclick="navTo('contact')">احصل على عرض</button>
+  <button class="ham" id="ham" onclick="toggleM()"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="h-slide on"></div><div class="h-slide"></div><div class="h-slide"></div>
+  <div class="h-ov"></div>
+  <div class="h-content">
+    <div class="h-badge"><span>الإمارات العربية المتحدة · مرخّص رسمياً</span></div>
+    <h1 class="h-title">نبني بثقة <span class="ac">نُسلّم بجودة</span></h1>
+    <p class="h-sub">البناء العريق للمقاولات والصيانة العامة — شريكك الموثوق في مشاريع البناء والصيانة والهدم وإدارة المشاريع عبر الإمارات</p>
+    <div class="h-btns">
+      <button class="btn-g" onclick="navTo('projects')">اطّلع على مشاريعنا</button>
+      <button class="btn-o" onclick="navTo('contact')">احصل على عرض سعر</button>
+    </div>
+  </div>
+  <div class="h-dots">
+    <button class="h-dot on" onclick="gS(0)"></button>
+    <button class="h-dot" onclick="gS(1)"></button>
+    <button class="h-dot" onclick="gS(2)"></button>
+  </div>
+</section>
+
+<div class="ticker"><div class="t-track">
+  <div class="t-item">مقاولات المباني <span class="t-dot"></span></div>
+  <div class="t-item">صيانة المباني <span class="t-dot"></span></div>
+  <div class="t-item">هدم الإنشاءات <span class="t-dot"></span></div>
+  <div class="t-item">إدارة المشاريع <span class="t-dot"></span></div>
+  <div class="t-item">أبوظبي · دبي · الشارقة <span class="t-dot"></span></div>
+  <div class="t-item">مرخّص من دائرة التنمية الاقتصادية <span class="t-dot"></span></div>
+  <div class="t-item">مقاولات المباني <span class="t-dot"></span></div>
+  <div class="t-item">صيانة المباني <span class="t-dot"></span></div>
+  <div class="t-item">هدم الإنشاءات <span class="t-dot"></span></div>
+  <div class="t-item">إدارة المشاريع <span class="t-dot"></span></div>
+  <div class="t-item">أبوظبي · دبي · الشارقة <span class="t-dot"></span></div>
+  <div class="t-item">مرخّص من دائرة التنمية الاقتصادية <span class="t-dot"></span></div>
+</div></div>
+
+<section id="about" class="sec"><div class="sec-inner">
+<div class="about-g">
+  <div class="a-imgs sr-r">
+    <img class="a-main" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="موقع بناء" loading="lazy">
+    <img class="a-small" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=80" alt="إنشاء" loading="lazy">
+    <div class="a-yr"><div class="n">+١٥</div><div class="l">عاماً<br>من التميّز</div></div>
+  </div>
+  <div class="a-text sr-l">
+    <div class="sec-tag"><span>من نحن</span></div>
+    <h2 class="sec-title">شريكك الأمثل<br>في كل خطوة <span class="outline">بناء</span></h2>
+    <p>البناء العريق للمقاولات والصيانة العامة شركة مرخّصة تعمل في الإمارات، تجمع بين الخبرة الطويلة والتقنيات الحديثة لتقديم مشاريع استثنائية تفوق التوقعات.</p>
+    <p class="a-hl">نلتزم بأعلى معايير الجودة والسلامة في كل مرحلة من مراحل التنفيذ، من الأساسات حتى التسليم النهائي.</p>
+    <div class="badges">
+      <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>مرخّص من دائرة التنمية الاقتصادية</span></div>
+      <div class="badge"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg><span>معايير الجودة والسلامة</span></div>
+      <div class="badge"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span>فريق متخصص وذو خبرة</span></div>
+    </div>
+  </div>
+</div>
+</div></section>
+
+<section id="services" class="sec"><div class="sec-inner">
+  <div class="sr"><div class="sec-tag"><span>خدماتنا</span></div><h2 class="sec-title">كل ما تحتاجه<br>تحت <span class="outline">سقف واحد</span></h2></div>
+  <div class="svc-g">
+    <div class="svc sr" style="transition-delay:.1s"><div class="svc-n">٠١</div><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-8 8 8v10M9 20v-6h6v6"/></svg></div><h3>مقاولات المباني بأنواعها</h3><p>تنفيذ مشاريع البناء السكنية والتجارية والصناعية من الألف إلى الياء، بدءاً من الأعمال الإنشائية وحتى التشطيب النهائي.</p></div>
+    <div class="svc sr" style="transition-delay:.2s"><div class="svc-n">٠٢</div><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h3>صيانة المباني</h3><p>برامج صيانة شاملة للمباني السكنية والتجارية، تشمل الأعمال الكهربائية والميكانيكية والمدنية بصورة دورية.</p></div>
+    <div class="svc sr" style="transition-delay:.3s"><div class="svc-n">٠٣</div><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg></div><h3>هدم المباني ورفع الأنقاض</h3><p>خدمات الهدم الآمن والمنظّم للمباني مع تنظيف الموقع وفق اشتراطات بلديات الإمارات.</p></div>
+    <div class="svc sr" style="transition-delay:.4s"><div class="svc-n">٠٤</div><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div><h3>خدمات إدارة المشاريع</h3><p>إدارة متكاملة من التخطيط والتصميم إلى التنفيذ والتسليم مع ضمان الالتزام بالجدول الزمني والميزانية.</p></div>
+  </div>
+</div></section>
+
+<section id="numbers"><div class="num-g">
+  <div class="num-i sr" style="transition-delay:.1s"><div class="big" data-count="15" data-suffix="+">٠</div><div class="lbl">سنة من الخبرة</div></div>
+  <div class="num-i sr" style="transition-delay:.2s"><div class="big" data-count="100" data-suffix="+">٠</div><div class="lbl">مشروع منجز</div></div>
+  <div class="num-i sr" style="transition-delay:.3s"><div class="big" data-count="26" data-suffix="K+">٠</div><div class="lbl">متابع إنستغرام</div></div>
+  <div class="num-i sr" style="transition-delay:.4s"><div class="big" data-count="100" data-suffix="٪">٠</div><div class="lbl">رضا العملاء</div></div>
+</div></section>
+
+<section id="projects" class="sec"><div class="sec-inner">
+  <div class="sr"><div class="sec-tag"><span>مشاريعنا</span></div><h2 class="sec-title">أعمال <span class="outline">نفخر بها</span></h2></div>
+  <div class="filt sr">
+    <button class="fb on" data-f="all">الكل</button>
+    <button class="fb" data-f="con">مقاولات</button>
+    <button class="fb" data-f="mai">صيانة</button>
+    <button class="fb" data-f="dem">هدم</button>
+  </div>
+  <div class="proj-g">
+    <div class="proj-i" data-c="con" onclick="oLB(this)"><span class="p-lbl">مقاولات</span><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" alt="مجمع سكني" loading="lazy"><div class="proj-inf"><h4>مجمع سكني</h4><span>أبوظبي · ٢٠٢٤</span></div></div>
+    <div class="proj-i" data-c="con" onclick="oLB(this)"><span class="p-lbl">إنشاءات</span><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="برج تجاري" loading="lazy"><div class="proj-inf"><h4>برج تجاري</h4><span>دبي · ٢٠٢٣</span></div></div>
+    <div class="proj-i" data-c="mai" onclick="oLB(this)"><span class="p-lbl">صيانة</span><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="صيانة" loading="lazy"><div class="proj-inf"><h4>أعمال الصيانة</h4><span>الشارقة · ٢٠٢٣</span></div></div>
+    <div class="proj-i" data-c="con" onclick="oLB(this)"><span class="p-lbl">فلل</span><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt="فلل" loading="lazy"><div class="proj-inf"><h4>فلل سكنية فاخرة</h4><span>أبوظبي · ٢٠٢٤</span></div></div>
+    <div class="proj-i" data-c="dem" onclick="oLB(this)"><span class="p-lbl">هدم</span><img src="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?w=600&q=80" alt="هدم" loading="lazy"><div class="proj-inf"><h4>هدم وإزالة</h4><span>دبي · ٢٠٢٣</span></div></div>
+    <div class="proj-i" data-c="con" onclick="oLB(this)"><span class="p-lbl">بنية تحتية</span><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="بنية تحتية" loading="lazy"><div class="proj-inf"><h4>بنية تحتية</h4><span>الإمارات · ٢٠٢٢</span></div></div>
+  </div>
+</div></section>
+
+<div class="lb" id="lb" onclick="cLB()"><button class="lb-x" onclick="cLB()">✕</button><img id="lbImg" src="" alt=""></div>
+
+<section id="process" class="sec"><div class="sec-inner">
+  <div class="sr"><div class="sec-tag"><span>آلية العمل</span></div><h2 class="sec-title">كيف <span class="outline">نعمل؟</span></h2></div>
+  <div class="proc-list">
+    <div class="proc-s on" onclick="togP(this)"><div class="p-n">١</div><div><div class="p-t">الاستشارة الأولية</div><div class="p-d">زيارة الموقع واجتماع تفصيلي لفهم احتياجات المشروع والجدول الزمني والميزانية.</div></div></div>
+    <div class="proc-s" onclick="togP(this)"><div class="p-n">٢</div><div><div class="p-t">التخطيط والتصميم</div><div class="p-d">إعداد المخططات التفصيلية وجداول التوريد وتقديرات التكلفة بالتنسيق مع المستشار الهندسي.</div></div></div>
+    <div class="proc-s" onclick="togP(this)"><div class="p-n">٣</div><div><div class="p-t">استخراج التراخيص</div><div class="p-d">نتولى جميع إجراءات التصاريح والموافقات من بلديات الإمارات بشكل كامل.</div></div></div>
+    <div class="proc-s" onclick="togP(this)"><div class="p-n">٤</div><div><div class="p-t">التنفيذ والإشراف</div><div class="p-d">فرق ميدانية متخصصة مع تحديثات دورية وضمان الجودة في كل مرحلة.</div></div></div>
+    <div class="proc-s" onclick="togP(this)"><div class="p-n">٥</div><div><div class="p-t">التسليم والضمان</div><div class="p-d">فحص شامل وتسليم نظيف مع توثيق الضمانات وخطط الصيانة بعد التسليم.</div></div></div>
+  </div>
+</div></section>
+
+<section id="testi" class="sec"><div class="sec-inner">
+  <div class="sr"><div class="sec-tag"><span>آراء العملاء</span></div><h2 class="sec-title">ماذا يقول <span class="outline">عملاؤنا</span></h2></div>
+  <div class="testi-wrap sr">
+    <div class="testi-sl" id="tSl">
+      <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-q">شركة محترفة بكل معنى الكلمة. نفّذوا مشروع فيلّتي في أبوظبي في الوقت المحدد وبجودة تفوق ما توقعته.</p><div class="t-auth"><div class="t-av">م</div><div><div class="t-name">محمد الهاجري</div><div class="t-role">مالك مشروع سكني · أبوظبي</div></div></div></div>
+      <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-q">تعاملت معهم في صيانة مبنى تجاري والنتيجة كانت رائعة. التواصل سهل والفريق سريع الاستجابة ودقيق.</p><div class="t-auth"><div class="t-av">س</div><div><div class="t-name">سارة المنصوري</div><div class="t-role">مديرة عقارات · دبي</div></div></div></div>
+      <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-q">أنجزوا مشروع الهدم ورفع الأنقاض في وقت قياسي وبأسعار منافسة. سأوصي بهم دائماً.</p><div class="t-auth"><div class="t-av">ع</div><div><div class="t-name">عبدالله الكتبي</div><div class="t-role">مطوّر عقاري · الشارقة</div></div></div></div>
+    </div>
+    <div class="t-nav">
+      <button class="t-btn" onclick="gT(tI+1)">&#8249;</button>
+      <button class="t-btn" onclick="gT(tI-1)">&#8250;</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="insta" class="sec"><div class="sec-inner">
+  <div class="sr" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px">
+    <div><div class="sec-tag"><span>إنستغرام</span></div><h2 class="sec-title">تابعونا على <span class="outline">إنستغرام</span></h2></div>
+    <a href="https://www.instagram.com/albina.alareeq" target="_blank" style="color:var(--gold);text-decoration:none;font-size:14px;font-weight:700">@albina.alareeq ↗</a>
+  </div>
+  <div class="ig-g sr">
+    <div class="ig-i"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&q=75" alt="" loading="lazy"><div class="ig-ov"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="none" stroke="var(--dark)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--dark)"/></svg></div></div>
+    <div class="ig-i"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=75" alt="" loading="lazy"><div class="ig-ov"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="none" stroke="var(--dark)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--dark)"/></svg></div></div>
+    <div class="ig-i"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&q=75" alt="" loading="lazy"><div class="ig-ov"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="none" stroke="var(--dark)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--dark)"/></svg></div></div>
+    <div class="ig-i"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=75" alt="" loading="lazy"><div class="ig-ov"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="none" stroke="var(--dark)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--dark)"/></svg></div></div>
+    <div class="ig-i"><img src="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?w=400&q=75" alt="" loading="lazy"><div class="ig-ov"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="none" stroke="var(--dark)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--dark)"/></svg></div></div>
+    <div class="ig-i"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=75" alt="" loading="lazy"><div class="ig-ov"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="none" stroke="var(--dark)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--dark)"/></svg></div></div>
+  </div>
+  <div class="ig-cta sr"><a href="https://www.instagram.com/albina.alareeq" target="_blank"><svg viewBox="0 0 24 24" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg> تابع حسابنا على إنستغرام</a></div>
+</div></section>
+
+<section id="contact" class="sec"><div class="sec-inner">
+  <div class="sr"><div class="sec-tag"><span>تواصل معنا</span></div><h2 class="sec-title">ابدأ مشروعك <span class="outline">اليوم</span></h2></div>
+  <div class="con-g">
+    <div class="sr-r">
+      <p style="color:var(--gray);line-height:1.9;font-size:14px;margin-bottom:24px">هل لديك مشروع في ذهنك؟ تواصل معنا للحصول على استشارة مجانية. نخدم أبوظبي ودبي والشارقة وجميع إمارات الدولة.</p>
+      <div class="c-list">
+        <div class="c-row"><div class="c-ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .97h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div><div class="c-tx"><label>واتساب</label><span dir="ltr">+971 56 378 0000</span></div></div>
+        <div class="c-row"><div class="c-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="c-tx"><label>البريد الإلكتروني</label><span dir="ltr">albina.alareeq@gmail.com</span></div></div>
+        <div class="c-row"><div class="c-ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="c-tx"><label>الموقع</label><span>أبوظبي، الإمارات العربية المتحدة</span></div></div>
+        <div class="c-row"><div class="c-ic"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.5" cy="6.5" r="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></div><div class="c-tx"><label>إنستغرام</label><span dir="ltr">@albina.alareeq · 26.5K</span></div></div>
+      </div>
+    </div>
+    <div class="sr-l">
+      <form class="c-form" onsubmit="return false">
+        <div class="f-row"><div class="f-g"><label>الاسم الكامل</label><input type="text" placeholder="اسمك" required></div><div class="f-g"><label>رقم الجوال</label><input type="tel" placeholder="+971" dir="ltr"></div></div>
+        <div class="f-g"><label>البريد الإلكتروني</label><input type="email" placeholder="بريدك الإلكتروني" dir="ltr"></div>
+        <div class="f-g"><label>نوع الخدمة</label><select><option>مقاولات المباني</option><option>صيانة المباني</option><option>هدم ورفع أنقاض</option><option>إدارة المشاريع</option><option>أخرى</option></select></div>
+        <div class="f-g"><label>تفاصيل المشروع</label><textarea placeholder="اشرح مشروعك باختصار..."></textarea></div>
+        <button type="button" class="f-sub" onclick="subForm()">أرسل طلبك ←</button>
+        <div class="f-ok" id="fOk">✓ تم استلام طلبك! سيتواصل معك فريقنا خلال ٢٤ ساعة.</div>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="ft-inner">
+  <div class="ft-top">
+    <div>
+      <div class="ft-logo"><img src="data:image/png;base64,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" alt="البناء العريق"></div>
+      <p class="ft-br-txt">شركة مرخّصة من دائرة التنمية الاقتصادية، نقدّم خدمات مقاولات وصيانة وهدم وإدارة مشاريع عبر الإمارات.</p>
+      <div class="ft-soc">
+        <a class="ft-sc" href="https://www.instagram.com/albina.alareeq" target="_blank"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4" fill="var(--dark)"/><circle cx="17.5" cy="6.5" r="1.5" fill="var(--gold)"/></svg></a>
+        <a class="ft-sc" href="https://wa.me/971563780000" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.952-1.404A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.95 7.95 0 01-4.056-1.107l-.292-.173-3.024.857.862-3.017-.19-.31A7.964 7.964 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg></a>
+        <a class="ft-sc" href="mailto:albina.alareeq@gmail.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+      </div>
+    </div>
+    <div class="ft-col"><h5>الخدمات</h5><ul><li><a onclick="navTo('services')">مقاولات المباني</a></li><li><a onclick="navTo('services')">صيانة المباني</a></li><li><a onclick="navTo('services')">هدم الإنشاءات</a></li><li><a onclick="navTo('services')">إدارة المشاريع</a></li></ul></div>
+    <div class="ft-col"><h5>روابط سريعة</h5><ul><li><a onclick="navTo('about')">من نحن</a></li><li><a onclick="navTo('projects')">مشاريعنا</a></li><li><a onclick="navTo('process')">آلية العمل</a></li><li><a onclick="navTo('contact')">تواصل معنا</a></li></ul></div>
+  </div>
+  <div class="ft-bot">
+    <p>© ٢٠٢٥ البناء العريق للمقاولات والصيانة العامة — ذ.م.م · ش.ش.و. جميع الحقوق محفوظة.</p>
+    <p><a href="https://www.instagram.com/albina.alareeq" target="_blank">@albina.alareeq ↗</a></p>
+  </div>
+</div></footer>
+
+<script>
+/* ===== LOADER ===== */
+var loaderDone = false;
+function hideLoader() {
+  if (loaderDone) return;
+  loaderDone = true;
+  var el = document.getElementById('loader');
+  if (!el) return;
+  el.style.pointerEvents = 'none';
+  el.style.transition = 'opacity 0.55s ease';
+  el.style.opacity = '0';
+  setTimeout(function() { el.style.display = 'none'; }, 600);
+}
+// Spawn particles
+(function() {
+  var pc = document.getElementById('lParticles');
+  if (!pc) return;
+  for (var i = 0; i < 16; i++) {
+    var p = document.createElement('div');
+    p.className = 'lp';
+    var dur  = (2 + Math.random() * 3).toFixed(1);
+    var del  = (Math.random() * 4).toFixed(1);
+    var left = (8 + Math.random() * 84).toFixed(0);
+    var bot  = (Math.random() * 25).toFixed(0);
+    p.style.cssText = 'left:' + left + '%;bottom:' + bot + '%;animation:lpart ' + dur + 's ease ' + del + 's infinite;';
+    pc.appendChild(p);
+  }
+})();
+// Animate percent
+(function() {
+  var pEl = document.getElementById('lpct');
+  var bar = document.getElementById('lbarfill');
+  var n = 0;
+  var toAr = function(x) { return String(x).replace(/[0-9]/g, function(d){ return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
+  var tid = setInterval(function() {
+    n += 2;
+    if (n > 100) n = 100;
+    if (pEl) pEl.textContent = toAr(n) + '٪';
+    if (bar) bar.style.width = n + '%';
+    if (n >= 100) clearInterval(tid);
+  }, 36);
+})();
+// Guaranteed hide — 3 independent triggers
+setTimeout(hideLoader, 3200);
+document.addEventListener('DOMContentLoaded', function() { setTimeout(hideLoader, 3200); });
+window.addEventListener('load', function() { setTimeout(hideLoader, 500); });
+
+/* ===== SITE JS ===== */
+function navTo(id) {
+  closeM();
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+var nav = document.getElementById('nav');
+var btt = document.getElementById('btt');
+window.addEventListener('scroll', function() {
+  if (nav) nav.classList.toggle('solid', window.scrollY > 40);
+  if (btt) btt.classList.toggle('on', window.scrollY > 400);
+});
+function toggleM() {
+  document.getElementById('mMenu').classList.toggle('open');
+  document.getElementById('mOvl').classList.toggle('open');
+  document.getElementById('ham').classList.toggle('open');
+}
+function closeM() {
+  document.getElementById('mMenu').classList.remove('open');
+  document.getElementById('mOvl').classList.remove('open');
+  document.getElementById('ham').classList.remove('open');
+}
+// Hero slider
+var sI = 0;
+var slides = document.querySelectorAll('.h-slide');
+var dots   = document.querySelectorAll('.h-dot');
+function gS(i) {
+  slides[sI].classList.remove('on'); dots[sI].classList.remove('on');
+  sI = i;
+  slides[sI].classList.add('on'); dots[sI].classList.add('on');
+}
+setInterval(function() { gS((sI + 1) % slides.length); }, 5000);
+// Scroll reveal
+var srObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.sr,.sr-l,.sr-r').forEach(function(el) { srObs.observe(el); });
+// Counters
+var toAr = function(n) { return String(n).replace(/[0-9]/g, function(d){ return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
+function animC(el) {
+  var t = parseInt(el.dataset.count), sf = el.dataset.suffix || '';
+  var c = 0, inc = t / (1800 / 16);
+  var id = setInterval(function() {
+    c = Math.min(c + inc, t);
+    el.textContent = toAr(Math.floor(c)) + sf;
+    if (c >= t) clearInterval(id);
+  }, 16);
+}
+var cObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(x) {
+    if (x.isIntersecting) {
+      x.target.querySelectorAll('[data-count]').forEach(animC);
+      cObs.unobserve(x.target);
+    }
+  });
+}, { threshold: 0.3 });
+var ns = document.getElementById('numbers');
+if (ns) cObs.observe(ns);
+// Filter
+document.querySelectorAll('.fb').forEach(function(b) {
+  b.addEventListener('click', function() {
+    document.querySelectorAll('.fb').forEach(function(x) { x.classList.remove('on'); });
+    b.classList.add('on');
+    var f = b.dataset.f;
+    document.querySelectorAll('.proj-i').forEach(function(i) {
+      var show = f === 'all' || i.dataset.c === f;
+      i.style.transition = 'opacity .4s,transform .4s';
+      i.style.opacity = show ? '1' : '0.15';
+      i.style.transform = show ? 'scale(1)' : 'scale(.97)';
+      i.style.pointerEvents = show ? 'all' : 'none';
+    });
+  });
+});
+// Lightbox
+function oLB(el) {
+  var img = el.querySelector('img');
+  document.getElementById('lbImg').src = img.src;
+  document.getElementById('lb').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function cLB() {
+  document.getElementById('lb').classList.remove('on');
+  document.body.style.overflow = '';
+}
+// Process accordion
+function togP(el) {
+  document.querySelectorAll('.proc-s').forEach(function(s) { s.classList.remove('on'); });
+  el.classList.add('on');
+}
+// Testimonials
+var tI = 0;
+var tSl = document.getElementById('tSl');
+var tCount = document.querySelectorAll('.t-card').length;
+function gT(i) { tI = (i + tCount) % tCount; tSl.style.transform = 'translateX(' + (tI * 100) + '%)'; }
+setInterval(function() { gT(tI + 1); }, 6000);
+// Form
+function subForm() {
+  var ok = document.getElementById('fOk');
+  ok.style.display = 'block';
+  setTimeout(function() { ok.style.display = 'none'; }, 5000);
+}
+</script>
+</body>
+</html>
